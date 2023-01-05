@@ -1,49 +1,28 @@
 {
   "name": "react-course",
-  "version": "1.0.0",
-  "description": "This repository will have a React project to learn front-end development",
-  "main": "index.js",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "build": "webpack --mode=production --node-env=production",
-    "build:dev": "webpack --mode=development",
-    "build:prod": "webpack --mode=production --node-env=production",
-    "watch": "webpack --watch",
-    "serve": "webpack serve"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jdelmazo9/react-course.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/jdelmazo9/react-course/issues"
-  },
-  "homepage": "https://github.com/jdelmazo9/react-course#readme",
   "dependencies": {
-    "@babel/plugin-transform-runtime": "^7.19.6",
-    "@types/jest": "^29.2.4",
-    "@types/node": "^18.11.17",
-    "@types/react": "^18.0.26",
-    "@types/react-dom": "^18.0.9",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "typescript": "^4.9.4"
+    "@next/font": "13.1.0",
+    "@types/node": "18.11.17",
+    "@types/react": "18.0.26",
+    "@types/react-dom": "18.0.9",
+    "eslint": "8.30.0",
+    "eslint-config-next": "13.1.0",
+    "next": "13.1.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "typescript": "4.9.4"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.5",
-    "@babel/preset-env": "^7.20.2",
-    "@babel/preset-react": "^7.18.6",
-    "babel-loader": "^9.1.0",
-    "css-loader": "^6.7.3",
-    "file-loader": "^6.2.0",
-    "mini-css-extract-plugin": "^2.7.2",
-    "sass": "^1.57.1",
-    "sass-loader": "^13.2.0",
-    "style-loader": "^3.3.1",
-    "webpack": "^5.75.0",
-    "webpack-cli": "^5.0.1",
-    "webpack-dev-server": "^4.11.1"
+    "autoprefixer": "^10.4.13",
+    "postcss": "^8.4.20",
+    "tailwindcss": "^3.2.4"
   }
 }
