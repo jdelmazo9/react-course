@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @font-face {
   font-family: Oswald;
   src: url('/fonts/Oswald/static/Oswald-Bold.ttf') format("truetype");
@@ -30,4 +31,8 @@
   font-family: Oswald;
   src: url('/fonts/Oswald/static/Oswald-SemiBold.ttf') format("truetype");
   font-weight: 600;
+}
+
+html, body, #__next {
+  @apply h-screen
 }

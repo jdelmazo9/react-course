@@ -1,16 +1,24 @@
 import { PROJECTS } from "../../constants";
 import Layout from "../../components/Layout";
+import {
+  GetServerSidePropsContext,
+  InferGetServerSidePropsType,
+  NextPage,
+} from "next";
 import { isString } from "lodash";
-import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import { FC } from "react";
+import DetailsSideBar from "../../components/DetailsSideBar";
 
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>;
 
-const Project: FC<Props> = ({ id }) => {
-  const { emoji, title } = PROJECTS[parseInt(id)];
+const ProjectPage: NextPage<Props> = ({ project }) => {
+  const { emoji, title } = project;
   return (
-    <Layout title="My Portfolio" description="React Exercises">
-      <div className="text-center space-y-4 text-5xl">
+    <Layout
+      sidebar={<DetailsSideBar project={project} />}
+      title="My Portfolio"
+      description="React Exercises"
+    >
+      <div className="flex-1 text-center space-y-4 text-5xl">
         <div>{emoji}</div>
         <h2 className="font-oswald">{title}</h2>
       </div>
@@ -18,14 +26,18 @@ const Project: FC<Props> = ({ id }) => {
   );
 };
 
-export default Project;
+export default ProjectPage;
 
-export const getServerSideProps: GetServerSideProps<{ id: string }> = async (
-  context
+export const getServerSideProps = async (
+  context: GetServerSidePropsContext
 ) => {
   const { id } = context.query;
   if (!isString(id)) {
     throw "invalid ID";
   }
-  return { props: { id } };
+  const project = PROJECTS.find((project) => project.id === id);
+  if (!project) {
+    throw new Error(`Project with id ${id} not found`);
+  }
+  return { props: { project } };
 };

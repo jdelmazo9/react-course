@@ -14,9 +14,14 @@ const Header: FC = () => (
   </header>
 );
 
-type Props = { title: string; description: string; children: ReactNode };
+type Props = {
+  title: string;
+  description: string;
+  children: ReactNode;
+  sidebar: ReactNode;
+};
 
-const Layout: FC<Props> = ({ title, description, children }) => {
+const Layout: FC<Props> = ({ title, description, children, sidebar }) => {
   return (
     <>
       <Head>
@@ -25,8 +30,13 @@ const Layout: FC<Props> = ({ title, description, children }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.png" />
       </Head>
-      <Header />
-      <main className="mt-8 flex items-center justify-center">{children}</main>
+      <div className="h-full flex flex-col">
+        <Header />
+        <div className="p-8 flex h-full w-full space-x-8">
+          <main className="flex-1 space-y-4">{children}</main>
+          {sidebar}
+        </div>
+      </div>
     </>
   );
 };
