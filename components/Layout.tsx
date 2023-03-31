@@ -33,7 +33,7 @@ const Layout: FC<Props> = ({ title, description, children, sidebar }) => {
       <div className="h-full flex flex-col">
         <Header />
         <div className="p-8 flex h-full w-full space-x-8">
-          <main className="flex-1 space-y-4">{children}</main>
+          <main className="flex-1 flex flex-col">{children}</main>
           {sidebar}
         </div>
       </div>

@@ -1,3 +1,6 @@
+import { FC } from "react";
+import ConfettiTimer from "./components/ConfettiTimer";
+
 type Color = 'red' | 'blue'
 
 type Tag = {
@@ -13,6 +16,10 @@ type Project = {
     tags: string[];
     technicalConcepts: string[];
     link: string;
+}
+
+const PROJECT_COMPONENT_MAPPING: Record<Project["id"], FC> = {
+    confetti_timer: ConfettiTimer
 }
 
 const TAGS: Record<string, Tag> = {
@@ -97,5 +104,5 @@ const PROJECTS: Project[] = [
     },
 ]
 
-export { PROJECTS, COLOR_CLASS_MAPPING, TAGS }
+export { PROJECTS, COLOR_CLASS_MAPPING, TAGS, PROJECT_COMPONENT_MAPPING }
 export type { Tag, Project }
