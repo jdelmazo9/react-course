@@ -1,4 +1,4 @@
-import { PROJECTS } from "../../constants";
+import { PROJECTS, PROJECT_COMPONENT_MAPPING } from "../../constants";
 import Layout from "../../components/Layout";
 import {
   GetServerSidePropsContext,
@@ -11,16 +11,20 @@ import DetailsSideBar from "../../components/DetailsSideBar";
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>;
 
 const ProjectPage: NextPage<Props> = ({ project }) => {
-  const { emoji, title } = project;
+  const { id, emoji, title } = project;
+  const Component = PROJECT_COMPONENT_MAPPING[id];
   return (
     <Layout
       sidebar={<DetailsSideBar project={project} />}
       title="My Portfolio"
       description="React Exercises"
     >
-      <div className="flex-1 text-center space-y-4 text-5xl">
+      <div className="text-center py-4 flex flex-col space-y-2 text-5xl">
         <div>{emoji}</div>
         <h2 className="font-oswald">{title}</h2>
+      </div>
+      <div className="flex flex-1 items-center justify-center">
+        {Component && <Component />}
       </div>
     </Layout>
   );
